@@ -1,6 +1,6 @@
-### README Validator node Celestia (init during gentx)
+# README Validator node Celestia (init during gentx)
 
-### Copy genesis file from networks
+## Copy genesis file from networks
 
 ```
 cd $HOME
@@ -14,16 +14,16 @@ copy genesis file into .config
 cp $HOME/networks/blockspacerace/genesis.json $HOME/.celestia-app/config
 ```
 
-### Configure config.toml and app.toml
+# Configure config.toml and app.toml
 
-### Add seeds and peers to config.toml
+## Add seeds and peers to config.toml
 
 Set seeds and peers from https://github.com/celestiaorg/networks/tree/master/blockspacerace into config.toml
 
 seeds="0293f2cf7184da95bc6ea6ff31c7e97578b9c7ff@65.109.106.95:26656,8f14ec71e1d712c912c27485a169c2519628cfb6@celest-test-seed.theamsolutions.info:22256"
 peers="be935b5942fd13c739983a53416006c83837a4d2@178.170.47.171:26656,cea09c9ac235a143d4b6a9d1ba5df6902b2bc2bd@95.214.54.28:20656,5c9cfba00df2aaa9f9fe26952e4bf912e3f1e8ee@195.3.221.5:26656"
 
-### Some more edits to config.toml file
+## Some more edits to config.toml file
 
 In Config.toml file at .celestia-app/config/config.toml
 Make sure to add you VPS ip address in external-address
@@ -46,7 +46,7 @@ Check status using
 sudo ufw status
 ```
 
-### Configure Pruning and Validator Mode
+## Configure Pruning and Validator Mode
 
 Disable pruning for now and set it to "nothing" in app.toml file (Required for blockspacerace-0 during genesis)
 
@@ -65,14 +65,14 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 
 ```
 
-### Configure validator mode
+## Configure validator mode
 
 ```
 sed -i.bak -e "s/^mode *=.*/mode = \"validator\"/" $HOME/.celestia-app/config/config.toml
 
 ```
 
-### Reset Network
+## Reset Network
 If you are not using a fresh new server, then only do this.
 
 This will delete all data folders so we can start fresh:
@@ -82,7 +82,7 @@ celestia-appd tendermint unsafe-reset-all --home $HOME/.celestia-app
 
 ```
 
-### QuickSync with Snapshot for Mamaki testnet (Optional but RECOMMENDED to reduce storage used)
+## QuickSync with Snapshot for Mamaki testnet (Optional but RECOMMENDED to reduce storage used)
 DON'T do this if you are genesis validator, since you will be signing blocks from block 0.
 
 Syncing from Genesis can take a long time, depending on your hardware. Using this method you can synchronize your Celestia node very quickly by downloading a recent snapshot of the blockchain
@@ -100,7 +100,7 @@ wget -O - https://snaps.qubelabs.io/celestia/${SNAP_NAME} | tar xf - \
 
 ```
 
-### Start the Celestia-App with SystemD (Validator Node)
+## Start the Celestia-App with SystemD (Validator Node)
 
 This will start the validator as the validator node was already created during gentx generation
 
@@ -156,16 +156,16 @@ curl -s localhost:26657/status | jq .result | jq .sync_info
 
 If you are facing issues, check to see if you have made changes to config.toml file as mentioned before as well as have all relevant ports open
 
-### Backup validator keys
+## Backup validator keys
 
 tar -czvf validator_key.tar.gz .celestia-appd/config/*_key.json 
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
 
 
-### Miscellanous Commands
+# Miscellanous Commands
 
-### Delegate to the validator
+## Delegate to the validator
 
 ```
 celestia-appd tx staking delegate \
@@ -175,14 +175,14 @@ celestiavaloper1qjshyuh77s7sz0l5kq4ft22pm0686qf36sx4cy 10000000utia \
 
 Need minimum 10 TIA to become active
 
-### Unjail command
+## Unjail command
 
 ```
 celestia-appd tx slashing unjail --from celestia1qjshyuh77s7sz0l5kq4ft22pm0686qf3l0yvwz --chain-id mamaki
 
 ```
 
-### Check Logs of node
+## Check Logs of node
 
 ```
 journalctl -u celestia-appd.service -f --no-hostname -o cat
