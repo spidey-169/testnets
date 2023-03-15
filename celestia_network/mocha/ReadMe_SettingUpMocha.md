@@ -399,6 +399,8 @@ journalctl -u celestia-appd.service -f --no-hostname -o cat
 
 ### Backing up wallet into GPG encrypted file
 
+```
 tar -czvf validator_key.tar.gz .celestia-app/config/*_key.json
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
+```
