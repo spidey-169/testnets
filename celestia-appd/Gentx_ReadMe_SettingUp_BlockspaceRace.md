@@ -1,6 +1,6 @@
-###  README GENTX Celestia Blockspacerace
+#  README GENTX Celestia Blockspacerace
 
-### Create a new user account on the dedicated server
+## Create a new user account on the dedicated server
 
 If you are signed in as the root user, you can create a new user at any time by running the following:
 
@@ -23,7 +23,7 @@ groups celestia
 ```
 
 
-### Setup The Dependencies
+## Setup The Dependencies
 
 First, make sure to update and upgrade the OS:
 
@@ -65,7 +65,7 @@ go version
 
 ```
 
-### Install Celestia App
+## Install Celestia App
 The steps below will create a binary file named celestia-appd inside $HOME/go/bin folder which will be used later to run the node.
 
 ```
@@ -85,7 +85,7 @@ celestia-appd --help
 
 ```
 
-### Init node
+## Init node
 
 You can first run the following commands:
 
@@ -103,16 +103,16 @@ xxxxxxxxxxxx
 xxxxxxxxxxxx
 ```
 
-### Assign a Moniker and EVM_ADDRESS
+## Assign a Moniker and EVM_ADDRESS
 
 ```
 MONIKER=spidey
 EVM_ADDRESS=<YOUR_ETH_ADDRESS_GOES_HERE>
 ```
 
-### Create wallet or recover one
+## Create wallet or recover one
 
-# Option 1 - generate new wallet
+### Option 1 - generate new wallet
 
 ```
 celestia-appd config keyring-backend test
@@ -136,20 +136,20 @@ tar -czvf validator_key.tar.gz .celestia-app/config/*_key.json
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
 
-# Option 2 - recover existing wallet
+### Option 2 - recover existing wallet
 
 ```
 celestia-appd keys add wallet --recover
 ```
 
-### Add genesis account
+## Add genesis account
 
 ```
 CELES_AMOUNT="5000100000000utia"
 celestia-appd add-genesis-account $KEY_NAME $CELES_AMOUNT
 ```
 
-### Generate gentx
+## Generate gentx
 
 STAKING_AMOUNT=5000000000000utia
 celestia-appd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID \
@@ -162,13 +162,13 @@ celestia-appd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID \
     --evm-address=$EVM_ADDRESS \
 
 
-### Things you have to backup
+## Things you have to backup
 
 - 24 word mnemonic of your generated wallet
 - contents of $HOME/.celestia-app/config/*
 
 
-### Submit PR with Gentx
+## Submit PR with Gentx
 
 1. Copy the contents of ${HOME}/.celestia-app/config/gentx/gentx-XXXXXXXX.json.
 2. Fork https://github.com/celestiaorg/networks
