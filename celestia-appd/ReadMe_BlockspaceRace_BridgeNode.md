@@ -1,10 +1,10 @@
-#### README Bridge Node Celestia
+# README Bridge Node Celestia
 
-### Install celestia-node
+## Install celestia-node
 
 Installing celestia-node for the blockspacerace testnet means installing a specific version to be compatible with the network.
 
-# Install the celestia-node binary by running the following commands:
+### Install the celestia-node binary by running the following commands:
 
 ```
 cd $HOME 
@@ -17,7 +17,7 @@ make install
 make cel-key 
 ```
 
-# Verify that the binary is working and check the version with the celestia version command:
+### Verify that the binary is working and check the version with the celestia version command:
 
 ```
 celestia version 
