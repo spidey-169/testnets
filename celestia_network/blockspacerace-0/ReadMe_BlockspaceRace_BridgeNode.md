@@ -157,9 +157,12 @@ The node ID is in the ID value from the response.
 
 ### Backup Bridge keys
 
+```
 tar -czvf bridge_node_key.tar.gz tar ~/.celestia-bridge-blockspacerace-0/keys/*
 gpg -o bridge_node_key.tar.gz.gpg -ca bridge_node_key.tar.gz
 rm bridge_node_key.tar.gz
+```
+
 
 
 
