@@ -352,10 +352,11 @@ Need minimum 10 TIA to become active
 
 ### Backup validator keys
 
+```
 tar -czvf validator_key.tar.gz .celestia-appd/config/*_key.json 
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
-
+```
 
 ### Unjail command
 
