@@ -1,3 +1,3 @@
 # testnets
 
-Readme for testnets run
+Readme manuals for various testnets 
