@@ -56,7 +56,7 @@ toml
 [Core]
   IP = "localhost"
   RPCPort = "26657"
-  GRPCPort = "9190"
+  GRPCPort = "9090"
 ```
 
 The rpc port 26657, can be found from your config.toml file under "RPC Server Configuration Options" or config.toml for Bridge node
@@ -66,7 +66,7 @@ toml
 [Core]
   IP = "localhost"
   RPCPort = "26657"
-  GRPCPort = "9190"
+  GRPCPort = "9090"
 ```
 
 This will create a few key and the output should look like
@@ -80,7 +80,18 @@ This will create a few key and the output should look like
 2023-03-14T21:32:56.837+0100    INFO    node    nodebuilder/init.go:153 NEW KEY GENERATED...
 ```
 
-Make sure to backup your node_key and save the mnemonic in a safe place.
+Save the mnemonic in a safe place offline, as you will need it recover the wallet
+
+### Backup Bridge keys
+
+Backup the bridge keys in the keys folder
+
+```
+tar -czvf bridge_node_key.tar.gz tar ~/.celestia-bridge-blockspacerace-0/keys/*
+gpg -o bridge_node_key.tar.gz.gpg -ca bridge_node_key.tar.gz
+rm bridge_node_key.tar.gz
+```
+
 
 ### Recover Bridge keys
 
@@ -196,13 +207,7 @@ Response
 ```
 The node ID is in the ID value from the response.
 
-### Backup Bridge keys
 
-```
-tar -czvf bridge_node_key.tar.gz tar ~/.celestia-bridge-blockspacerace-0/keys/*
-gpg -o bridge_node_key.tar.gz.gpg -ca bridge_node_key.tar.gz
-rm bridge_node_key.tar.gz
-```
 
 
 
