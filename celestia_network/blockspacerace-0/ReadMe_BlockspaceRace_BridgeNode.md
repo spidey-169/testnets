@@ -11,7 +11,7 @@ cd $HOME
 rm -rf celestia-node 
 git clone https://github.com/celestiaorg/celestia-node.git 
 cd celestia-node/ 
-git checkout tags/v0.7.0 
+git checkout tags/v0.7.1 
 make build 
 make install 
 make cel-key 
@@ -25,7 +25,7 @@ celestia version
 Output should look like
 
 ```
-Semantic version: v0.7.0 
+Semantic version: v0.7.1 
 Commit: 7226f02794bdf11a91116d0d4cd88399f05149ad 
 Build Date: Thu Dec 15 10:19:22 PM UTC 2022 
 System version: amd64/linux 
@@ -36,14 +36,38 @@ Golang version: go1.19.1
 
 Please use your own celestia-app node as the endpoint for your bridge node, this can be done by specifying
 
---core.ip localhost:26657 (<ipaddress:-gRPC_port>)
+--core.ip localhost:26657 (<ipaddress:-rpc-port>)
 ipaddress can also be replaced by local_host if you are running validator and bridge node on the same node.
 
 ```
 celestia bridge init --core.ip localhost:26657 --p2p.network blockspacerace
 ```
 
-The gRPC port 26657, can be found from your config.toml file under "RPC Server Configuration Options"
+OR
+
+```
+celestia bridge init --core.ip localhost --core.rpc.port 26657 --p2p.network blockspacerace
+```
+
+From bridge config.toml
+
+```
+toml 
+[Core]
+  IP = "localhost"
+  RPCPort = "26657"
+  GRPCPort = "9190"
+```
+
+The rpc port 26657, can be found from your config.toml file under "RPC Server Configuration Options" or config.toml for Bridge node
+
+```
+toml 
+[Core]
+  IP = "localhost"
+  RPCPort = "26657"
+  GRPCPort = "9190"
+```
 
 This will create a few key and the output should look like
 
@@ -58,10 +82,27 @@ This will create a few key and the output should look like
 
 Make sure to backup your node_key and save the mnemonic in a safe place.
 
+### Recover Bridge keys
+
+```
+cel-key add bridge --recover \
+        --p2p.network blockspacerace \
+        --node.type bridge \
+        --keyring-dir .celestia-bridge-blockspacerace-0/keys
+```
+
+
+
 ### Run the bridge node
 
 ```
 celestia bridge start --core.ip localhost:26657 --p2p.network blockspacerace --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318
+```
+
+OR
+
+```
+celestia bridge start --core.ip localhost --core.rpc.port 26657 --p2p.network blockspacerace --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318
 ```
 
 Once you start the Bridge Node, a wallet key will be generated for you. You will need to fund that address with Testnet tokens to pay for PayForBlob transactions. You can find the address by running the following command:
