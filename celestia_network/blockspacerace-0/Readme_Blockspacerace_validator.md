@@ -20,8 +20,10 @@ cp $HOME/networks/blockspacerace/genesis.json $HOME/.celestia-app/config
 
 Set seeds and peers from https://github.com/celestiaorg/networks/tree/master/blockspacerace into config.toml
 
+```
 seeds="0293f2cf7184da95bc6ea6ff31c7e97578b9c7ff@65.109.106.95:26656,8f14ec71e1d712c912c27485a169c2519628cfb6@celest-test-seed.theamsolutions.info:22256"
 peers="be935b5942fd13c739983a53416006c83837a4d2@178.170.47.171:26656,cea09c9ac235a143d4b6a9d1ba5df6902b2bc2bd@95.214.54.28:20656,5c9cfba00df2aaa9f9fe26952e4bf912e3f1e8ee@195.3.221.5:26656"
+```
 
 ## Some more edits to config.toml file
 
@@ -158,9 +160,11 @@ If you are facing issues, check to see if you have made changes to config.toml f
 
 ## Backup validator keys
 
+```
 tar -czvf validator_key.tar.gz .celestia-appd/config/*_key.json 
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
+```
 
 
 # Miscellanous Commands
