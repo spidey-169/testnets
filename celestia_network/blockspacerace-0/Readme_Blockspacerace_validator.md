@@ -40,7 +40,6 @@ Enable firewall and allow ports
 sudo ufw enable
 sudo ufw allow ssh
 sudo ufw allow 26656
-sudo ufw allow 26657
 ```
 
 Check status using
