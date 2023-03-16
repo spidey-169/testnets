@@ -50,7 +50,8 @@ Global Flags:
       --chain-id string     The network chain ID
       --home string         directory for config and data (default "/home/celestia/.celestia-app")
       --log_format string   The logging format (json|plain) (default "plain")
-      ```
+
+```
 
 ## Adding identity to existing validator
 
