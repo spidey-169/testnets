@@ -124,17 +124,25 @@ KEY_NAME=validator
 celestia-appd keys add $KEY_NAME
 ```
 
+Sample output
+
+```
 - address: celestia1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83c9hnjq
   name: validator
+  xxxxx
+  xxxxx
+```
 
 
 Copy the wallet seed phrase and keep in secure place
 
 Another IMPORTANT but optional action is backup your Validator_priv_key:
 
+```
 tar -czvf validator_key.tar.gz .celestia-app/config/*_key.json
 gpg -o validator_key.tar.gz.gpg -ca validator_key.tar.gz
 rm validator_key.tar.gz
+```
 
 ### Option 2 - recover existing wallet
 
@@ -151,6 +159,7 @@ celestia-appd add-genesis-account $KEY_NAME $CELES_AMOUNT
 
 ## Generate gentx
 
+```
 STAKING_AMOUNT=5000000000000utia
 celestia-appd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID \
     --pubkey=$(celestia-appd tendermint show-validator) \
@@ -160,6 +169,7 @@ celestia-appd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID \
     --commission-max-change-rate=0.01 \
     --min-self-delegation=1 \
     --evm-address=$EVM_ADDRESS \
+```
 
 
 ## Things you have to backup
