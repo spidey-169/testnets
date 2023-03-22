@@ -208,7 +208,7 @@ Response
 The node ID is in the ID value from the response.
 
 
-### Update your bridge node (when needed) with the latest tags
+# Update your bridge node (when needed) with the latest tags
 
 In this case we are updating to v/0.7.2 tag.
 
