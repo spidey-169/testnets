@@ -208,6 +208,59 @@ Response
 The node ID is in the ID value from the response.
 
 
+### Update your bridge node (when needed) with the latest tags
+
+In this case we are updating to v/0.7.2 tag.
+
+ALWAYS, MAKE SURE TO HAVE BACKED UP YOUR /keys folder beforehand
+
+
+1. stop your bridge node
+```
+sudo systemctl stop celestia-bridge
+```
+
+2. Delete the old data
+DON'T delete the old /keys as we need the keys to be the same
+
+```
+cd .celestia-bridge-blockspacerace-0
+rm -rf blocks/ 
+rm -rf data/ 
+rm -rf index/ 
+rm -rf transients/ 
+```
+3. upgrade to v0.7.2
+```
+git checkout main && git pull && git checkout  tags/v0.7.2 && make build && sudo make install
+```
+
+4. init your bridge node again 
+NOTE, this will DETECT your old keys and use them. 
+
+```
+celestia bridge init --core.ip localhost:26657 --p2p.network blockspacerace
+```
+
+6. start your bridge node
+
+```
+sudo systemctl start celestia-bridge
+```
+
+7. Check logs and if its syncing correctly
+
+```
+sudo journalctl -u \
+celestia-bridge.service -f
+```
+
+
+
+
+
+
+
 
 
 
