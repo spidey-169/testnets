@@ -220,7 +220,8 @@ ALWAYS, MAKE SURE TO HAVE BACKED UP YOUR /keys folder beforehand
 sudo systemctl stop celestia-bridge
 ```
 
-2. Delete the old data
+2. Delete the old data.
+
 DON'T delete the old /keys as we need the keys to be the same
 
 ```
