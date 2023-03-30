@@ -52,15 +52,103 @@ Global Flags:
       --log_format string   The logging format (json|plain) (default "plain")
 
 ```
+# Editing an existing validator
 
 ## Adding identity to existing validator
 
+```
 celestia-appd tx staking edit-validator --identity=$PGP_KEY_FROM_KEYBASE --chain-id blockspacerace-0 --from $VALIDATOR_WALLET --fees=1000utia
+```
 
 ## Adding description to existing validator
 
+```
 celestia-appd tx staking edit-validator --details="Full stack developer, expert node operator and community supporter at your service" --chain-id blockspacerace-0 --from $VALIDATOR_WALLET --fees=1000utia
+```
 
 ## Adding website to existing validator
 
+```
 celestia-appd tx staking edit-validator --website <website_url> --chain-id blockspacerace-0 --from $VALIDATOR_WALLET --fees=1000utia
+```
+
+## Claiming a rewards for a validator
+
+Rewards can be claimed using the following command. 
+
+```
+celestia-appd tx distribution withdraw-rewards celestiavaloper1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83a642yx --commission --from=celestia1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83c9hnjq --chain-id blockspacerace-0  --fees=1000utia --gas auto -y
+```
+
+Here make sure to give the --fees=1000utia flag (in addition to --gas auto -y) to ensure that txn doesn't get reverted. If you transaction is using lesser fees than required you will get the following error, where the raw log clearly mentions that fees are not sufficient:
+
+```
+gas estimate: 133862
+code: 13
+codespace: sdk
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: 'insufficient fees; got:  required: 134utia: insufficient fee'
+timestamp: ""
+tx: null
+txhash: D65212599F18BED8877766417EB4EF5C12FC05D40C316EEFC6F8F036B8CFE448
+```
+
+For a correct submission the output will look like
+```
+gas estimate: 150956
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: '[]'
+timestamp: ""
+tx: null
+txhash: 3300646B582FC0169F907F75A6A3E8683A259A9D5EE66F8FCB24AA2C2CADAF44
+```
+
+You can always check the transaction hash on the explorer to see if the transaction was successful
+ 
+ # Delegating to a validator
+
+Delegte you tokens to a validator using : 
+
+```
+celestia-appd tx staking delegate celestiavaloper1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83a642yx 28000000000utia\
+    --from celestia1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83c9hnjq --chain-id blockspacerace-0  --fees=1000utia --gas auto -y
+```
+
+This will stake 28000 TIA tokens to validator with celestiavaloper address: celestiavaloper1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83a642yx from wallet address: celestia1q4qtpgw9m6l4ezj6v0pc7l79eq7fpd83c9hnjq
+
+Note again, we have added additional flags (--fees=1000utia --gas auto -y) to make sure txn has the sufficient fees to get mined.
+
+Once again a successful txn will look like:
+
+```
+as estimate: 176338
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: '[]'
+timestamp: ""
+tx: null
+txhash: 9768103B56E40A06F504E79666DA7C4AC79834B78383B1EC79CB37F9A58A0192
+```
+
+You can always check the transaction hash on the explorer to see if the transaction was successful
