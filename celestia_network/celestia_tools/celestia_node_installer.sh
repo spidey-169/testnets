@@ -94,7 +94,7 @@ WantedBy=multi-user.target
 function source {
     cd ${HOME} \
     && rm -rf ${GIT_FOLDER} \
-    && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER} \
+    && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER}.git \
     && cd ${GIT_FOLDER} \
     && git checkout tags/${BIN_VER} -b ${BIN_VER} \
     && make install
@@ -103,7 +103,7 @@ function source {
     line
 }
 function installSource {
-    PROJECT="$GOPATH/src/github.com/${GIT_FOLDER}"
+    PROJECT="$HOME/${GIT_FOLDER}"
     if [ -e $PROJECT ]; then
         line
         echo -e "$YELLOW ${GIT_FOLDER} folder exists...$NORMAL"
@@ -208,7 +208,7 @@ function genesis {
     line
     read -p "Genesis link: " LINK2
     mkdir -p $HOME/tmp && cd $HOME/tmp
-    GENESIS_PATH="$HOME/${CONFIG_FOLDER}/config/"
+    GENESIS_PATH="$HOME/.${CONFIG_FOLDER}/config/"
     FILE="genesis.json"
     
     echo -e "$YELLOW :: Downloading file with Genesis...$NORMAL"
@@ -248,7 +248,7 @@ function genesis {
 
     line
     echo -e "$GREEN Checking genesis SHASUM -a 256:$NORMAL"
-    shasum -a 256 $HOME/${CONFIG_FOLDER}/config/genesis.json
+    shasum -a 256 $HOME/.${CONFIG_FOLDER}/config/genesis.json
     sleep 3
 }
 function seeds {
@@ -256,21 +256,21 @@ function seeds {
     echo -e "$GREEN Enter Seeds (Example: be3db0fe5ee7f764902dbcc75126a2e082cbf00c@seed-1.morpheus.desmos.network:26656)$NORMAL"
     line
     read -p "Seed: " SEED
-    sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"'$SEED'"#' $HOME/${CONFIG_FOLDER}/config/config.toml
+    sed -i.bak -E 's#^(seeds[[:space:]]+=[[:space:]]+).*$#\1"'$SEED'"#' $HOME/.${CONFIG_FOLDER}/config/config.toml
 }
 function peers {
     line
     echo -e "$GREEN Enter Peers (Validator or Sentry PEER) (Example: 728d59298dce64c72f13001f67a5b3e7fc080f91@135.181.201.2:26656)$NORMAL"
     line
     read -p "Persistent_peers: " PEERS
-    sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"'$PEERS'"#' $HOME/${CONFIG_FOLDER}/config/config.toml
+    sed -i.bak -E 's#^(persistent_peers[[:space:]]+=[[:space:]]+).*$#\1"'$PEERS'"#' $HOME/.${CONFIG_FOLDER}/config/config.toml
 }
 function gas {
     line
     echo -e "$GREEN Enter minimum-gas-prices (Example: 0.025udaric)$NORMAL"
     line
     read -p "minimum-gas-prices: " GAS_PRICE
-    sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+).*$#\1"'$GAS_PRICE'"#' $HOME/${CONFIG_FOLDER}/config/app.toml
+    sed -i.bak -E 's#^(minimum-gas-prices[[:space:]]+=[[:space:]]+).*$#\1"'$GAS_PRICE'"#' $HOME/.${CONFIG_FOLDER}/config/app.toml
 }
 function greeting {
 line
@@ -344,11 +344,11 @@ function snapshot {
     fi
 }
 function cosmVars {
-    sudo /bin/bash -c  'echo "export PATH=$HOME/'${CONFIG_FOLDER}'/cosmovisor/current/bin:\$PATH" >> $HOME/.profile'
+    sudo /bin/bash -c  'echo "export PATH=$HOME/'.${CONFIG_FOLDER}'/cosmovisor/current/bin:\$PATH" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export BIN_NAME='${BIN_NAME}'" >> $HOME/.profile'
-    sudo /bin/bash -c  'echo "export CONFIG_FOLDER='${CONFIG_FOLDER}'" >> $HOME/.profile'
+    sudo /bin/bash -c  'echo "export CONFIG_FOLDER='.${CONFIG_FOLDER}'" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export DAEMON_NAME='${BIN_NAME}'" >> $HOME/.profile'
-    sudo /bin/bash -c  'echo "export DAEMON_HOME=${HOME}/'${CONFIG_FOLDER}'" >> $HOME/.profile'
+    sudo /bin/bash -c  'echo "export DAEMON_HOME=${HOME}/'.${CONFIG_FOLDER}'" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export DAEMON_ALLOW_DOWNLOAD_BINARIES=true" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export DAEMON_RESTART_AFTER_UPGRADE=true" >> $HOME/.profile'
     sudo /bin/bash -c  'echo "export DAEMON_LOG_BUFFER_SIZE=512" >> $HOME/.profile'
