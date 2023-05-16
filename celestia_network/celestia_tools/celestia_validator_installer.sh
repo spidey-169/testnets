@@ -300,24 +300,8 @@ function unpackSnapshot {
 }
 function snapshot {
     sleep 2
-    SNAP="blockspacerace-0"
-    
+    line
     if [[ "${CHAIN}" == "blockspacerace-0" ]]; then
-        SNAP_LINK=$(curl -s https://snaps.qubelabs.io/celestia/ | jq -r .snap_link)
-        unpackSnapshot
-    else
-        line
-        echo -e "$RED Something went wrong ... Snapshot not found ...$NORMAL"
-        line
-    fi
-    line
-    echo -e "$GREEN Snapshot for ${CHAIN} installed.$NORMAL"
-    line
-    sleep 2
-
-
-
-    if [[ $SNAP == *"${CHAIN}"* ]]; then
         line
         echo -e "$GREEN FOUND A SNAPSHOT FOR THE$NORMAL$RED ${BIN_NAME}$NORMAL$GREEN NETWORK WITH CHAIN-ID:$NORMAL$RED ${CHAIN}$NORMAL"
         line
@@ -327,22 +311,27 @@ function snapshot {
         line
         read -p "Answer: " SNAP_ANSWER
         if [ "$SNAP_ANSWER" == "1" ]; then
-            checkAria
-            SNAP_LINK=$(curl -s https://snaps.qubelabs.io/celestia/ | jq -r .snap_link)
-            unpackSnapshot        
-        else
+		cd $HOME
+		${BIN_NAME} tendermint unsafe-reset-all --home $HOME/${CONFIG_FOLDER}
+		mkdir -p ~/${CONFIG_FOLDER}/data
+		SNAP_NAME=$(curl -s https://snaps.qubelabs.io/celestia/ | \
+  		egrep -o ">blockspacerace.*tar" | tr -d ">")
+		wget -O - https://snaps.qubelabs.io/celestia/${SNAP_NAME} | tar xf - \
+    		-C ~/${CONFIG_FOLDER}/data/
+	else
             line
-            echo -e "$RED Something went wrong ... Snapshot not found ...$NORMAL"
+            echo -e "$RED SKIPPING SNAPSHOT, will sync from GENESIS block ...$NORMAL"
             line
         fi
-        line
-        echo -e "$GREEN Snapshot for ${CHAIN} installed.$NORMAL"
-        line
     else
         line
-        echo -e "$RED Something went wrong .. $CHAIN not found ...$NORMAL"
+        echo -e "$RED Something went wrong ... Snapshot not found ...$NORMAL"
         line
     fi
+    line
+    echo -e "$GREEN Snapshot for ${CHAIN} installed.$NORMAL"
+    line
+    sleep 2
 }
 function cosmVars {
     sudo /bin/bash -c  'echo "export PATH=$HOME/'${CONFIG_FOLDER}'/cosmovisor/current/bin:\$PATH" >> $HOME/.profile'
@@ -504,8 +493,8 @@ function launch {
     peers
     seeds
     gas
-    #snapshot
-    #compCosmovisor
+    snapshot
+    compCosmovisor
 
     line
     echo -e "$GREEN ${BIN_NAME} Configured.$NORMAL"
