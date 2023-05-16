@@ -28,12 +28,16 @@ BIN_VER=v0.13.0
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_installer.sh \
 && chmod +x celestia_validator_installer.sh \
-&& ./celestia_validator_installer -g GIT_NAME -f GIT_FOLDER -b BIN_NAME -c CONFIG_FOLDER -v BIN_VER
+&& ./celestia_validator_installer.sh -g GIT_NAME -f GIT_FOLDER -b BIN_NAME -c CONFIG_FOLDER -v BIN_VER
 ```
 
 # Launch node
 
-Reload configuration change - systemctl daemon-reload
-Restart Cosmovisor service - systemctl restart celestia-appd.service
-Cosmovisor service logs - journalctl -u celestia-appd.service -f
-Stop Cosmovisor service - systemctl stop celestia-appd.service
+Reload configuration change 
+    - systemctl daemon-reload
+Restart Cosmovisor service 
+    - systemctl restart celestia-appd.service
+Cosmovisor service logs 
+    - journalctl -u celestia-appd.service -f
+Stop Cosmovisor service 
+    - systemctl stop celestia-appd.service
