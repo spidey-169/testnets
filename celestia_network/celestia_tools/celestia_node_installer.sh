@@ -103,7 +103,7 @@ function source {
     line
 }
 function installSource {
-    PROJECT="$GOPATH/src/github.com/${GIT_FOLDER}"
+    PROJECT="$HOME/${GIT_FOLDER}"
     if [ -e $PROJECT ]; then
         line
         echo -e "$YELLOW ${GIT_FOLDER} folder exists...$NORMAL"
