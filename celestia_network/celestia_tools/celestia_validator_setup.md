@@ -1,5 +1,5 @@
 # NOTE
-The purpose of this guide is to allow auto-installation/update of celestia-appd and necessary environment and to quickly update binaries. Further support for bridge/light node can easily added to it.
+The purpose of this guide is to allow auto-installation/update of celestia-appd set-up, cosmovisor installation, quick-sync with snaoshot and configuring necessary environment to quickly install/update binaries. Further support for bridge/light node can easily added to it.
 
 This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the official celestia documentation. 
 
