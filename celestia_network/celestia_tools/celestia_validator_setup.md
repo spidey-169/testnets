@@ -28,11 +28,23 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 
 # Launch node
 
-Reload configuration change 
-    - systemctl daemon-reload
-Restart Cosmovisor service 
-    - systemctl restart celestia-appd.service
-Cosmovisor service logs 
-    - journalctl -u celestia-appd.service -f
-Stop Cosmovisor service 
-    - systemctl stop celestia-appd.service
+## Reload configuration change 
+
+```
+systemctl daemon-reload
+```
+## Restart Cosmovisor service 
+
+```
+systemctl restart celestia-appd.service
+```
+## Cosmovisor service logs 
+
+```
+journalctl -u celestia-appd.service -f
+```
+## Stop Cosmovisor service 
+
+```
+systemctl stop celestia-appd.service
+```
