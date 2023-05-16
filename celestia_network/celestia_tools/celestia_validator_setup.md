@@ -1,6 +1,15 @@
+# NOTE
+
+This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the documentation. The purpose of this guide is to allow quick update/installation of celestia-appd and necessary environment and to quickly updated binaries
+
 # Setup environment
 
-Install environment for Celestia-APPD
+Setup environment for Celestia-APPD
+1. Go version can be specified via -v flag (-v 1.20.2). When no flag is provided default version (v 1.20.2) for Go is chosen
+2. Go path can be specified via -p flag (-p $HOME/go)
+E.g. (sudo ./celestia_validator_set_env.sh -v 1.20.2 -p $HOME/go)
+
+You can use all the variables or not use them at all and then the GO_VERSION and GO_PATH will be used by default as (-v 1.20.2 -p /usr/local/go). In the below guide I am using the default paths and Go version
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
@@ -8,11 +17,9 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 && sudo ./celestia_validator_set_env.sh 
 ```
 
-
 # Node setup/Cosmovisor Installation and Snapshot based installation
 
-For Celestia Validator installation (Celestia-APPD):
-
+For Celestia Validator Node installation (Celestia-APPD):
 
 ```
 GIT_NAME=celestiaorg
@@ -69,3 +76,4 @@ journalctl -u celestia-appd.service -f
 ```
 systemctl stop celestia-appd.service
 ```
+
