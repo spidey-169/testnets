@@ -10,7 +10,7 @@ Setup environment for Celestia-APPD
 2. Go path can be specified via -p flag (-p $HOME/go)
 E.g. (sudo ./celestia_validator_set_env.sh -v 1.20.2 -p $HOME/go)
 
-When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are used. In the below guide I am using the default paths and Go version
+When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are used. In the below guide I am using the default paths and default Go version
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
