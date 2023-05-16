@@ -33,34 +33,23 @@ function goInstall {
     line
     echo -e "$YELLOW GOLANG ${VERSION} installing... $NORMAL"
     line
-    mkdir -p $HOME/tmp
-    PACK=go${VERSION}.linux-amd64.tar.gz
-    PACK_PATH="$HOME/tmp"
-    LINK="https://golang.org/dl/${PACK}"
     echo -e "$YELLOW :: Downloading GO archive...$NORMAL"
-    wget -P $PACK_PATH $LINK --quiet --show-progress
-    sudo tar -C /usr/local -xzf ${PACK_PATH}/${PACK}
-    rm -rf $HOME/tmp
+    wget "https://golang.org/dl/go${VERSION}.linux-amd64.tar.gz" 
+    sudo tar -C /usr/local -xzf "go${VERSION}.linux-amd64.tar.gz" 
+    rm "go${VERSION}.linux-amd64.tar.gz" 
     sudo chmod 755 /usr/local/go
     line
-    echo -e "$GREEN GOLANG ${VERSION} instaled... $NORMAL"
+    echo -e "$GREEN GOLANG ${VERSION} installed... $NORMAL"
     line
 }
 
+
 function env {
-    sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
-    
-    sudo /bin/bash -c  'echo "export GOPATH='$GO_PATH'" >> $HOME/.bashrc'
-    sudo /bin/bash -c  'echo "export PATH='$GO_PATH'/bin:\$PATH" >> $HOME/.bashrc'
-    sudo /bin/bash -c  'echo "export GOBIN='$GO_PATH'/bin" >> $HOME/.bashrc'
-    sudo /bin/bash -c  'echo "export GOROOT=/usr/local/go" >> $HOME/.bashrc'
-    sudo /bin/bash -c  'echo "export GO111MODULE=on" >> $HOME/.bashrc'
-    . /etc/profile
-    . $HOME/.bashrc
+    sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile"
     export GOPATH=$GO_PATH
     mkdir -p ${GOPATH}{,/bin,/pkg,/src}
     line
-    echo -e "$GREEN Env instaled... $NORMAL"
+    echo -e "$GREEN Env installed... $NORMAL"
     line
 }
 
@@ -84,7 +73,7 @@ if [ -f "$GO" ]; then
         env
         GOVERSION="$($(which go) version)"
         line
-        echo -e "$GREEN ${GOVERSION} instaled... $NORMAL"
+        echo -e "$GREEN ${GOVERSION} installed... $NORMAL"
         line
     elif [ "$ANSWER" == "2" ]; then
         line
