@@ -1,12 +1,11 @@
 # Setup environment
 
-Install environment for Celestia APPDS
+Install environment for Celestia-APPD
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
 && chmod +x celestia_validator_set_env.sh \
-&& ./celestia_validator_set_env.sh \
-&& rm -rf celestia_validator_set_env.sh
+&& ./celestia_validator_set_env.sh 
 ```
 
 
