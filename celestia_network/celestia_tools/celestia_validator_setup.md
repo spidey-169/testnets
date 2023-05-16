@@ -1,5 +1,5 @@
 # NOTE
-The purpose of this guide is to allow auto-installation/update of celestia-appd set-up, cosmovisor installation, quick-sync with snaoshot and configuring necessary environment to quickly install/update binaries. Further support for bridge/light node can easily added to it.
+The purpose of this guide is to allow auto-installation/update of celestia-appd set-up, cosmovisor installation, quick-sync with snapshot and configuring necessary environment to quickly install/update binaries. Further support for bridge/light node can easily added to it.
 
 This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the official celestia documentation. 
 
@@ -15,10 +15,11 @@ When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
 && chmod +x celestia_validator_set_env.sh \
-&& sudo ./celestia_validator_set_env.sh 
+&& sudo ./celestia_validator_set_env.sh \
+&& source $HOME/.bash_profile
 ```
 
-# Node setup/Cosmovisor Installation and Qucik-sync with Snapshot
+# Celestia-app Node setup, Cosmovisor Installation and Quickk-sync with Snapshot
 For Celestia Validator Node installation (Celestia-APPD):
 
 ```
