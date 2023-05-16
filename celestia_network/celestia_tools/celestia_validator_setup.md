@@ -1,23 +1,18 @@
 # Setup environment
 
-Install environment for Celestia with a userflag for custom version of Golang #GO.
-
-Specify version and GO path in this line ./go.sh -v GO_VERSION -p GO_PATH
-Example ./go.sh -v 1.20.2 -p /root/go
-
-You can use all the variables or not use them at all and then the GO_VERSION and GO_PATH will be used by default as (-v 1.20.2 -p /usr/local/go)
+Install environment for Celestia APPDS
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
 && chmod +x celestia_validator_set_env.sh \
-&& ./celestia_validator_set_env.sh -v 1.20.2 -p /root/go \
-&& rm -rf go.sh
+&& ./celestia_validator_set_env.sh \
+&& rm -rf celestia_validator_set_env.sh
 ```
 
 
 # Node setup/Cosmovisor Installation and Snapshot based installation
 
-For Celestia Validator installation: provide the following command line arguments
+For Celestia Validator installation (Celestia-APPD): provide the following command line arguments
 
 GIT_NAME=celestiaorg
 GIT_FOLDER=celestia-app
