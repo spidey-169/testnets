@@ -1,6 +1,7 @@
 # NOTE
+The purpose of this guide is to allow auto-installation/update of celestia-appd and necessary environment and to quickly update binaries. Further support for bridge/light node can easily added to it.
 
-This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the documentation. The purpose of this guide is to allow quick update/installation of celestia-appd and necessary environment and to quickly updated binaries
+This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the official celestia documentation. 
 
 # Setup environment
 
@@ -9,7 +10,7 @@ Setup environment for Celestia-APPD
 2. Go path can be specified via -p flag (-p $HOME/go)
 E.g. (sudo ./celestia_validator_set_env.sh -v 1.20.2 -p $HOME/go)
 
-You can use all the variables or not use them at all and then the GO_VERSION and GO_PATH will be used by default as (-v 1.20.2 -p /usr/local/go). In the below guide I am using the default paths and Go version
+When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are used. In the below guide I am using the default paths and Go version
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
