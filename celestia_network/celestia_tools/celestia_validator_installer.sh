@@ -52,7 +52,7 @@ After=network-online.target
 [Service]
 Type=simple
 User=$(whoami)
-ExecStart='${GOPATH}'/bin/'${BIN_NAME}' start '${FLAG}' --home '${HOME}'/'${CONFIG_FOLDER}'
+ExecStart='${GOPATH}'/bin/'${BIN_NAME}' start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -78,7 +78,7 @@ Environment=DAEMON_RESTART_AFTER_UPGRADE=true
 Environment=DAEMON_LOG_BUFFER_SIZE=512
 Environment=UNSAFE_SKIP_BACKUP=true
 Environment=DAEMON_HOME='${HOME}'/'${CONFIG_FOLDER}'
-ExecStart='$(which cosmovisor)' start '${FLAG}' --home '${HOME}'/'${CONFIG_FOLDER}'
+ExecStart='$(which cosmovisor)' start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -94,10 +94,11 @@ WantedBy=multi-user.target
 function source {
     cd ${HOME} \
     && rm -rf ${GIT_FOLDER} \
-    && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER} \
+    && git clone https://github.com/${GIT_NAME}/${GIT_FOLDER}.git \
     && cd ${GIT_FOLDER} \
-    && git checkout tags/${BIN_VER} -b ${BIN_VER} \
-    && make install
+    && git checkout tags/${BIN_VER} -b ${BIN_VER}
+    line
+    make install
     line
     echo -e "$GREEN ${BIN_NAME} built and installed.$NORMAL"
     line
@@ -278,24 +279,24 @@ echo -e "$YELLOW Snapshot Services provided by :$NORMAL"
 echo -e "$GREEN QubeLabs:$NORMAL$RED https://snaps.qubelabs.io/celestia/$NORMAL"
 }
 function unpack {
-    cd $HOME/.${CONFIG_FOLDER}/data
+    cd $HOME/${CONFIG_FOLDER}/data
     aria2c -x2 ${SNAP_LINK}${SNAP_NAME}
     line
     echo -e "$GREEN Unpacking SNAP...$NORMAL"
     line
     tar -xf ${SNAP_NAME}
     rm -rf ${SNAP_NAME}
-    rm -rf $HOME/.${CONFIG_FOLDER}/data/upgrade-info.json
+    rm -rf $HOME/${CONFIG_FOLDER}/data/upgrade-info.json
 }
 function unpackSnapshot {
-    cd $HOME/.${CONFIG_FOLDER}/data
+    cd $HOME/${CONFIG_FOLDER}/data
     aria2c -x2 ${SNAP_LINK}
     line
     echo -e "$GREEN Unpacking SNAP...$NORMAL"
     line
     tar -xf *.tar
     rm -rf *.tar
-    rm -rf $HOME/.${CONFIG_FOLDER}/data/upgrade-info.json
+    rm -rf $HOME/${CONFIG_FOLDER}/data/upgrade-info.json
 }
 function snapshot {
     sleep 2
@@ -476,31 +477,35 @@ function launch {
     echo -e "$GREEN Enter your Moniker$NORMAL"
     line
     read -p "Moniker: " MONIKER
+    line
     GENESIS_FILE="$HOME/${CONFIG_FOLDER}/config/genesis.json"
     CONFIG_HOME="$HOME/${CONFIG_FOLDER}"
         if [ "$CHAIN" == "" ]; then
-            rm -rf ${GENESIS_FILE}
-            ${BIN_NAME} init $MONIKER --home $CONFIG_HOME
+            rm -rf ${GENESIS_FILE} 
+            ${BIN_NAME} init $MONIKER 
         else
-            rm -rf ${GENESIS_FILE}
+	    echo -e "Cleaning previous config and genesis files"
+            rm -rf ${GENESIS_FILE} 
+	    rm -rf ${CONFIG_FOLDER}/config/config.toml
+	    rm -rf ${CONFIG_FOLDER}/config/app.toml
             ${BIN_NAME} init $MONIKER --chain-id $CHAIN 
         fi
-
     line
     echo -e "$YELLOW Your Validator Moniker: $NORMAL$GREEN${MONIKER}$NORMAL$YELLOW, initialised.$NORMAL"
     echo -e "$YELLOW Your Validator NODE-ID: $NORMAL"
+    ${BIN_NAME} tendermint show-node-id
     line
     echo -e "$YELLOW Your full PEER: $NORMAL"
+    echo $(${BIN_NAME} tendermint show-node-id )'@'$(curl -s ifconfig.me)':'$(cat $CONFIG_HOME/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
     line
-
     sleep 5
 
     genesis
     peers
     seeds
     gas
-    snapshot
-    compCosmovisor
+    #snapshot
+    #compCosmovisor
 
     line
     echo -e "$GREEN ${BIN_NAME} Configured.$NORMAL"
