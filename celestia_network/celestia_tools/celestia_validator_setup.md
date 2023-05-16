@@ -8,9 +8,9 @@ Example ./go.sh -v 1.20.2 -p /root/go
 You can use all the variables or not use them at all and then the GO_VERSION and GO_PATH will be used by default as (-v 1.20.2 -p /usr/local/go)
 
 ```
-wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_node_set_env.sh \
-&& chmod +x celestia_node_set_env.sh \
-&& ./celestia_node_set_env.sh -v 1.20.2 -p /root/go \
+wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
+&& chmod +x celestia_validator_set_env.sh \
+&& ./celestia_validator_set_env.sh -v 1.20.2 -p /root/go \
 && rm -rf go.sh
 ```
 
@@ -26,9 +26,9 @@ CONFIG_FOLDER=.celestia-app
 BIN_VER=v0.13.0
 
 ```
-wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_node_installer.sh \
-&& chmod +x celestia_node_installer.sh \
-&& ./install.sh -g GIT_NAME -f GIT_FOLDER -b BIN_NAME -c CONFIG_FOLDER -v BIN_VER
+wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_installer.sh \
+&& chmod +x celestia_validator_installer.sh \
+&& ./celestia_validator_installer -g GIT_NAME -f GIT_FOLDER -b BIN_NAME -c CONFIG_FOLDER -v BIN_VER
 ```
 
 # Launch node
