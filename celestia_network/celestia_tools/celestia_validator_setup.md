@@ -22,7 +22,7 @@ For Celestia Validator installation: provide the following command line argument
 GIT_NAME=celestiaorg
 GIT_FOLDER=celestia-app
 BIN_NAME=celestia-appd
-CONFIG_FOLDER=.celestia-app
+CONFIG_FOLDER=celestia-app
 BIN_VER=v0.13.0
 
 ```
