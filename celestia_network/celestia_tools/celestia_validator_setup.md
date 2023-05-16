@@ -26,6 +26,27 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 && ./celestia_validator_installer.sh -g $GIT_NAME -f $GIT_FOLDER -b $BIN_NAME -c $CONFIG_FOLDER -v $BIN_VER
 ```
 
+Note the additional network parameters which will be asked during installation:
+
+Celestia chain-id : 
+```
+blockspacerace-0
+```
+
+Genesis file link:
+```
+https://raw.githubusercontent.com/celestiaorg/networks/master/blockspacerace/genesis.json
+```
+
+PEERS (https://github.com/celestiaorg/networks/blob/master/blockspacerace/peers.txt)
+```
+be935b5942fd13c739983a53416006c83837a4d2@178.170.47.171:26656
+```
+SEEDS (https://github.com/celestiaorg/networks/blob/master/blockspacerace/seeds.txt)
+```
+0293f2cf7184da95bc6ea6ff31c7e97578b9c7ff@65.109.106.95:26656
+```
+
 # Launch node
 
 ## Reload configuration change 
