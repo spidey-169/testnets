@@ -18,8 +18,7 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 && sudo ./celestia_validator_set_env.sh 
 ```
 
-# Node setup/Cosmovisor Installation and Snapshot based installation
-
+# Node setup/Cosmovisor Installation and Qucik-sync with Snapshot
 For Celestia Validator Node installation (Celestia-APPD):
 
 ```
