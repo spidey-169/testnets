@@ -10,7 +10,9 @@ Setup environment for Celestia-APPD
 2. Go path can be specified via -p flag (-p $HOME/go)
 E.g. (sudo ./celestia_validator_set_env.sh -v 1.20.2 -p $HOME/go)
 
-When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are used. In the below guide I am using the default paths and default Go version
+When you don't specify any flags default values (-v 1.20.2 -p /usr/local/go) are used. In the below guide I am using the default paths and default Go version (recommended for celestia-APPD) and its recommended to not change these. 
+
+(Script TESTED and works best with default for now)
 
 ```
 wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network/celestia_tools/celestia_validator_set_env.sh \
@@ -36,6 +38,11 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 
 Note the additional network parameters which will be asked during installation:
 
+Flags:
+
+```
+```
+
 Celestia chain-id : 
 ```
 blockspacerace-0
@@ -53,6 +60,11 @@ be935b5942fd13c739983a53416006c83837a4d2@178.170.47.171:26656
 SEEDS (https://github.com/celestiaorg/networks/blob/master/blockspacerace/seeds.txt)
 ```
 0293f2cf7184da95bc6ea6ff31c7e97578b9c7ff@65.109.106.95:26656
+```
+
+Minimum Gas denomination (blockspacerace)
+```
+400utia
 ```
 
 # Launch node

@@ -10,7 +10,7 @@ function version {
 }
 
 function gopath {
-  GO_PATH=${1:-"$HOME/go"}
+  GOPATH=${1:-"$HOME/go"}
 }
 
 function line {
@@ -22,7 +22,7 @@ function components {
     echo -e "$YELLOW Components installing... $NORMAL"
     line
     sudo apt update && sudo apt upgrade -y
-    sudo apt-get install build-essential automake autoconf libtool wget libssl-dev git cmake perl tmux ufw gcc unzip zip jq make -y
+    sudo apt-get install build-essential automake autoconf libtool wget curl libssl-dev git cmake perl tmux ufw gcc unzip zip jq make -y
     sudo apt-get install golang-statik -y
     line
     echo -e "$GREEN Components installed... $NORMAL"
@@ -46,7 +46,7 @@ function goInstall {
 
 function env {
     sudo sh -c "echo 'export PATH=\$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile"
-    export GOPATH=$GO_PATH
+    source $HOME/.bash_profile
     mkdir -p ${GOPATH}{,/bin,/pkg,/src}
     line
     echo -e "$GREEN Env installed... $NORMAL"

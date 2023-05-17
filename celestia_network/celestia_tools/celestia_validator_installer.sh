@@ -105,6 +105,7 @@ function source {
 }
 function installSource {
     PROJECT="$HOME/${GIT_FOLDER}"
+    GOPATH="$HOME/go"
     if [ -e $PROJECT ]; then
         line
         echo -e "$YELLOW ${GIT_FOLDER} folder exists...$NORMAL"
@@ -307,6 +308,7 @@ function snapshot {
         line
         echo -e "$GREEN CHOOSE OPTION: $NORMAL"
         echo -e "$RED 1$NORMAL -$YELLOW Use Snapshot$NORMAL"
+        echo -e " YOU NEED TO WAIT 3 hours if you choose to use snapshot"
         echo -e "$RED 2$NORMAL -$YELLOW Don't use Snapshot$NORMAL"
         line
         read -p "Answer: " SNAP_ANSWER
@@ -471,7 +473,7 @@ function launch {
     CONFIG_HOME="$HOME/${CONFIG_FOLDER}"
         if [ "$CHAIN" == "" ]; then
             rm -rf ${GENESIS_FILE} 
-            ${BIN_NAME} init $MONIKER 
+            ${BIN_NAME} init $MONIKER
         else
 	    echo -e "Cleaning previous config and genesis files"
             rm -rf ${GENESIS_FILE} 
