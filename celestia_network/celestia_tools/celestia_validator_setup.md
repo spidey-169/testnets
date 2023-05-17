@@ -1,7 +1,9 @@
 # NOTE
-The purpose of this guide is to allow auto-installation/update of celestia-appd set-up, cosmovisor installation, quick-sync with snapshot and configuring necessary environment to quickly install/update binaries. Further support for bridge/light node can easily added to it.
+The purpose of this guide is to allow auto-installation/update of celestia-appd and node installation, COSMOVISOR installation/configuration, QUICKSYNC with snapshot and configuring necessary environment to quickly install/update binaries. Further support for bridge/light node can easily added to it.
 
 This guide does not yet support creating wallet, delegaing, launching validator, for that please refer the additional steps from the official celestia documentation. 
+
+At the end of the script, you should be able to lauch the node using systemd service both using either COSMOVISOR or native celestia-appd binaries
 
 # Setup environment
 
@@ -23,6 +25,7 @@ wget https://raw.githubusercontent.com/spidey-169/testnets/main/celestia_network
 
 # Celestia-app Node setup, Cosmovisor Installation and Quickk-sync with Snapshot
 For Celestia Validator Node installation (Celestia-APPD):
+ NOTE: During the installation you will be asked if you wish to install COSMOVISOR and whether you wish to use QUICKSYNC snapshots (Quicksync snapshot will take a couple of hours to download)
 
 ```
 GIT_NAME=celestiaorg
