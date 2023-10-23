@@ -152,6 +152,7 @@ rm validator_key.tar.gz
 USE THIS WALLET if you already submitted a wallet information during blockspacerace
 
 ```
+KEY_NAME=validator-mainnet
 celestia-appd keys add wallet --recover
 ```
 
