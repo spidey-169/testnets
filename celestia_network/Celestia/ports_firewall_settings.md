@@ -6,9 +6,9 @@ Add your public IP, port information to the list of external address and also co
 
 ### 1.  Default Listening address/port (P2P) for p2p connection (26656) in config.toml, 
 
-Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node
+Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node, p2p address is where your guest is listening to. (this can be defaut 26656 or user definded)
 
-### (a) (NON_PROXMOX nodes) Keep P2P LISTENING port to be default (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
+### (a) (NON_PROXMOX nodes) Keep P2P LISTENING port to be DEFAULT (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
 
 You can keep this address to be the default address 26656, if using a dedicated node and no conflict between ports (fresh cloud node without anything else running on it now or in future). This is good choice if you have a separate node hosted on a separate server and port 26656 will not be in conflict.
 
@@ -27,7 +27,7 @@ laddr = 0:0:0:0:26656
 laddr = "tcp://0.0.0.0:26656"
 ```
 
-### (b)(PROXMOX GUEST Node) Recommended to EDIT DEFAULT P2P LISTENING port from 26656 to another port, USEFUL when hosting fullnode/validator on Proxmox GUEST.
+### (b)(PROXMOX GUEST Node) Recommended to EDIT to USER_DEFINED P2P LISTENING port from 26656 to another port, USEFUL when hosting fullnode/validator on Proxmox GUEST.
 
 If you wish to install validator/fullnode as a guest node (proxmox guest), you can edit the default LISTENING p2p port for validator/fullnode from 26656 be 26603 (in case 26656 is taken). This is desirable say if you want multiple testnets of celestia, to be run as different guest nodes and all need access to 26656. This changes the default port for listening for p2p connection for validator from 26656 to 26603. This is important if you are using say a proxmox guest node for validator and using natting to map ports from guest to host node. Here note that you will also need to setup natting from guest port 26603 to Host port 26603. If you have firewall, you need to open 26603 port in firewall.
 
@@ -50,15 +50,15 @@ This will change the entry to something like this
 laddr = "tcp://0.0.0.0:26603"
 ```
 
-### 2.  EXTERNAL address (P2P)
+### 2.  EXTERNAL address (P2P) 
 
-Add HOST IP/Public IP to the list of external address in config.toml, this is essential for outgoing connections.
+Add HOST IP/Public IP to the list of external address in config.toml, this is where the HOST node is listening to.
 
 Here I will add my PROXMOX_HOST_IP/PUBLIC_IP  and respective port to external_address under P2P configuration
 
 ### (a) NON_PROXMOX nodes hosting validator/fullnode
 
-use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT port as this is recommended option and not changed above)
+use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT port (26656) as this is recommended option and not changed above)
 
 ```
 external_address=<PUBLIC_IP>:26656
@@ -86,11 +86,11 @@ external_address = "<YOUR_HOST_IP>:26656"
 
 ### (b) PROXMOX_Guest node hosting validator/fullnode
 
-In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as default LISTENING p2p port chosen (26603 chosen before)
+In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as USER_DEFINED LISTENING p2p port chosen (26603 chosen before)
 
 
 ```
-external_address=<YOUR_HOST_IP>:26603
+external_address=<YOUR_HOST_IP>:26603 (user_defined_p2p_port)
 ```
 
 When both of these are setup it will look like below:
@@ -113,7 +113,7 @@ laddr = "tcp://0.0.0.0:26603"
 external_address = "<PROXMOX_HOST_IP>:26603"
 ```
 
-### 3.  LISTENING address/port  for RPC. 
+### 3.  LISTENING address/port for RPC. 
 
 If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
 
