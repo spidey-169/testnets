@@ -172,7 +172,7 @@ Proxmox firewall configurations only allow to proxmox instance
 
 Here: DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
-``OR``
+                                            ### OR
 
 ``Setting for ufw``:
 ```
@@ -185,7 +185,7 @@ sudo ufw allow ssh
 sudo ufw allow 26656
 ```
 
-``OR``
+                                            ### OR
 
 ### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
@@ -193,7 +193,7 @@ sudo ufw allow 26656
 
 Here DESTINATION port (D.Port) is 26603, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
-``OR``
+                                            ### OR 
 
 ``Settings for ufw``:
 ```
@@ -206,6 +206,8 @@ sudo ufw allow 26603
 
 ``Settings for Proxmox firewall (via GUI interface)``:
 Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
+ 
+                                                ### OR
 
 ``Settings for ufw``:
 sudo ufw allow from <BRIDGE_NODE_IP> proto tcp to any port 26657
