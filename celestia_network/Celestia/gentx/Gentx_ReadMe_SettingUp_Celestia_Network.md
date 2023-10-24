@@ -172,7 +172,7 @@ celestia-appd add-genesis-account $KEY_NAME $CELES_AMOUNT
 
 Please refer to the guide to manage listening port and external address as well as firewall when using proxmox guest node or dedicated isolated nodes for validator/bridge/fullnode
 
-[this](ports_firewall_settings.md)
+[this](../ports_firewall_settings.md)
 
 <!-- ## MANAGE PORTS (IMPORTANT) (Config.toml file edits) 
 
