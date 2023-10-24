@@ -118,6 +118,10 @@ NO NEED to assign an EVM_ADDRESS at this time for celestia network
 
 ## Create wallet or recover one
 
+Refer userguide for more wallet details
+
+[Celestia Wallet Guide](../wallets_userguide.md)
+
 ### Option 1 - generate new wallet
 
 DON"T USE THIS STEP for GENTX for Celestia as your wallet info should already be submitted. (since already added to genesis.json)
