@@ -168,18 +168,18 @@ laddr = "tcp://0.0.0.0:26657"
 Proxmox firewall configurations only allow to proxmox instance
 ### 1.  OPEN SSH port 22 on guest node 
 
-Settings for Proxmox firewall (via GUI interface):
+#### Settings for Proxmox firewall (via GUI interface):
 Here: DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
 ``OR``
 
-Setting for ufw:
+#### Setting for ufw:
 ```
 sudo ufw allow ssh
 ```
 
 ### (2a) OPEN DEFAULT listening port for p2p connection, 26656 
-Settings for ufw:
+#### Settings for ufw:
 ```
 sudo ufw allow 26656
 ```
@@ -188,12 +188,12 @@ sudo ufw allow 26656
 
 ### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
-Settings for Proxmox firewall (via GUI interface):
+#### Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 26603, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
 ``OR``
 
-Settings for ufw:
+#### Settings for ufw:
 ```
 sudo ufw allow 26603
 ```
@@ -202,10 +202,10 @@ sudo ufw allow 26603
 
 ###  4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR/FULLNODE) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
 
-Settings for Proxmox firewall (via GUI interface):
+#### Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
-Settings for ufw:
+#### Settings for ufw:
 sudo ufw allow from <BRIDGE_NODE_IP> proto tcp to any port 26657
 
 
