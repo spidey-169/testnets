@@ -179,13 +179,13 @@ Here: DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: a
 sudo ufw allow ssh
 ```
 
-### (2a) OPEN DEFAULT listening port for p2p connection, 26656 
+### (2a) (NON-PROXMOX NODE) OPEN DEFAULT listening port for p2p connection, 26656 
 ``Settings for ufw``:
 ```
 sudo ufw allow 26656
 ```
 
-### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
+### (2b) (PROXMOX GUEST NODE only), OPEN USER_SPECIFIED listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
 ``Settings for Proxmox firewall (via GUI interface)``:
 
