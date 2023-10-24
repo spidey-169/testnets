@@ -169,10 +169,14 @@ Proxmox firewall configurations only allow to proxmox instance
 ### 1.  OPEN SSH port 22 on guest node 
 
 Settings for Proxmox firewall (via GUI interface):
-Here DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
+Here: DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
+
+OR
 
 Setting for ufw:
+```
 sudo ufw allow ssh
+```
 
 ### (2a) OPEN DEFAULT listening port for p2p connection, 26656 
 Settings for ufw:
