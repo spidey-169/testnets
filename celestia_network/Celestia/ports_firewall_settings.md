@@ -4,7 +4,7 @@
 
 Add your public IP, port information to the list of external address and also configure laddr ports
 
-### 1.  Default Listening address/port (P2P) for p2p connection (26656) in config.toml, 
+### 1. Listening address(laddr)/port (P2P) for p2p connection (26656) in config.toml, 
 
 Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node, p2p address is where your guest is listening to (this can be defaut 26656 or user definded). 
 
@@ -133,7 +133,7 @@ external_address = "<PROXMOX_HOST_IP>:26603"
 
 ``NOTE: Firewall enabled on HOST node to ALLOW IN connections from SOURCE to DESTINATION (this HOST_NODE) port 26603``
 
-### 3.  LISTENING address/port for RPC. 
+### 3.  LISTENING address/port (laddr) for RPC. 
 
 If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
 
