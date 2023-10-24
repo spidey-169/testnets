@@ -167,6 +167,39 @@ laddr = "tcp://0.0.0.0:26657"
 
 #### NOTE you can also edit the default listening address for RPC as well, follow same process of editing port as p2p and make sure to keep it open for Bridge Nodes to be connected to RPC
 
+### 4.  LISTENING address/port (laddr) for gRPC. 
+
+default=9090
+
+If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 9090 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
+
+You can do this by setting address in gRPC SERVER CONNECTIONs and allowing firewall for this port to allowing incoming connection.
+
+```
+address = 0:0:0:0:9090
+
+```
+
+This will change the setting as follows:
+```
+###############################################################################
+###                           gRPC Configuration                            ###
+###############################################################################
+
+[grpc]
+
+# Enable defines if the gRPC server should be enabled.
+enable = true
+
+# Address defines the gRPC server address to bind to.
+address = "0.0.0.0:9090"
+```
+
+``REMEMBER, if FIREWALL is ENABLED, you need to ALLOW-IN <BRIDGE NODE IP> to be able to access FullNode/Validator NODE port 9090 (See Firewall rules below)``
+
+#### NOTE you can also edit the default listening address for RPC as well, follow same process of editing port as p2p and make sure to keep it open for Bridge Nodes to be connected to RPC
+
+
 ## FIREWALL: Setting up firewall when hosting validator on proxmox guest node/ vs separate server node (one can use ufw too)
 
 Proxmox firewall configurations only allow to proxmox instance
@@ -213,6 +246,19 @@ Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net
 
 ``Settings for ufw``:
 sudo ufw allow from <BRIDGE_NODE_IP> proto tcp to any port 26657
+
+
+You can also connect bridge node to the fullnode (backup node)
+
+###  5. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR/FULLNODE) OPEN gRPC listening port 9090 ONLY to bridge node IP (SOURCE)
+
+``Settings for Proxmox firewall (via GUI interface)``:
+Here DESTINATION port (D.Port) is 9090, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
+ 
+ ### OR
+
+``Settings for ufw``:
+sudo ufw allow from <BRIDGE_NODE_IP> proto tcp to any port 9090
 
 
 You can also connect bridge node to the fullnode (backup node)
