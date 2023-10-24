@@ -8,7 +8,7 @@ Add your public IP, port information to the list of external address and also co
 
 Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node, p2p address is where your guest is listening to (this can be defaut 26656 or user definded). 
 
-``This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION(on this node) port 26656 (FIREWALL needs to ALLOW-IN connections to 26656)``
+``This means its listening( need to ALLOW IN packets) from ANY SOURCE to DESTINATION(on this node) port 26656``
 
 ### (a) (NON_PROXMOX nodes) Keep P2P LISTENING port to be DEFAULT (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
 
@@ -29,12 +29,12 @@ laddr = 0:0:0:0:26656
 laddr = "tcp://0.0.0.0:26656"
 ```
 
-``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port (on this node) 26656 (FIREWALL needs to ALLOW IN connections to 26656)``
+``NOTE: FIREWALL needs to ALLOW IN packets from SOURCE to DESTINATION (this node) port 26656)``
 
 
 ### (b)(PROXMOX GUEST Node) Recommended to EDIT to USER_DEFINED P2P LISTENING port from 26656 to another port say 26603, USEFUL when hosting fullnode/validator on Proxmox GUEST. (ANY SOURCE to DESTINATION 26603 on node)
 
-``This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port 26603  on this node (FIREWALL needs to ALLOW-IN connections to 26603 if enabled)``
+``This means its listening(need to ALLOW IN packets) from ANY SOURCE to DESTINATION (this node) port 26603``
 
 If you wish to install validator/fullnode as a guest node (proxmox guest), you can edit the default LISTENING p2p port for validator/fullnode from 26656 be 26603 (in case 26656 is taken). This is desirable say if you want multiple testnets of celestia, to be run as different guest nodes and all need access to 26656. This changes the default port for listening for p2p connection for validator from 26656 to 26603. This is important if you are using say a proxmox guest node for validator and using natting to map ports from guest to host node. 
 
@@ -60,19 +60,20 @@ This will change the entry to something like this
 laddr = "tcp://0.0.0.0:26603"
 ```
 
-``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port 26603 on this GUEST node (FIREWALL needs to ALLOW IN connections to 26603)``
+``NOTE: FIREWALL needs to ALLOW IN packets from SOURCE to DESTINATION (this node) port 26603``
 
 ### 2.  EXTERNAL address (P2P) 
 
 Add HOST IP/Public IP to the list of external address in config.toml, this is where the HOST node is listening to.
-
-``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION P2P port on this HOST node, thus FIREWALL needs to ALLOW IN connections to 26656 on HOST node, Node with PUBLIC-IP``
 
 Here I will add my PROXMOX_HOST_IP/PUBLIC_IP  and respective port to external_address under P2P configuration
 
 ### (a) NON_PROXMOX nodes hosting validator/fullnode
 
 use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT port (26656) as this is recommended option and not changed above)
+
+``NOTE: This means its listening (need to ALLOW IN packets) from ANY SOURCE to DESTINATION(this host node) P2P port 26656``
+
 
 ```
 external_address=<PUBLIC_IP>:26656
@@ -97,11 +98,13 @@ laddr = "tcp://0.0.0.0:26656"
 
 external_address = "<YOUR_HOST_IP>:26656"
 ```
-``NOTE: This means it listening(ALLOW IN) from ANY SOURCE to DESTINATION 26656 port on this HOST node. Need Firewall enabled on HOST node to ALLOW IN connections to 26656``
+``NOTE: Firewall enabled on HOST node to ALLOW IN connections from SOURCE to DESTINATION (this HOST_NODE) port 26656``
 
 ### (b) PROXMOX_Guest node hosting validator/fullnode
 
 In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as USER_DEFINED LISTENING p2p port chosen (26603 chosen before)
+
+``NOTE: This means its listening ( need to ALLOW IN packets) from ANY SOURCE to DESTINATION (this PROXMOX_HOST node) P2P port 26603 ``
 
 
 ```
@@ -128,7 +131,7 @@ laddr = "tcp://0.0.0.0:26603"
 external_address = "<PROXMOX_HOST_IP>:26603"
 ```
 
-``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port 26603 on this PROXMOX_HOST node. (Firewall needs to ALLOW IN connections to 26603 on HOST_NODE``
+``NOTE: Firewall enabled on HOST node to ALLOW IN connections from SOURCE to DESTINATION (this HOST_NODE) port 26603``
 
 ### 3.  LISTENING address/port for RPC. 
 
