@@ -4,7 +4,7 @@ Manage Ports/Firewall
 
 Add your public IP, port information to the list of external address and also configure laddr ports
 
-1. Default Listening address/port (P2P) for p2p connection (26656) in config.toml, 
+### Default Listening address/port (P2P) for p2p connection (26656) in config.toml, 
 
 Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node
 
@@ -46,7 +46,7 @@ This will change the entry to something like this
 laddr = "tcp://0.0.0.0:26603"
 ```
 
-2. EXTERNAL address (P2P), Add HOST IP/Public IP to the list of external address in config.toml, this is essential for outgoing connections.
+### EXTERNAL address (P2P), Add HOST IP/Public IP to the list of external address in config.toml, this is essential for outgoing connections.
 
 Here I will add my HOST_IP and port to external_address under P2P configuration
 
@@ -103,7 +103,7 @@ laddr = "tcp://0.0.0.0:26603"
 external_address = "<PROXMOX_HOST_IP>:26603"
 ```
 
-3. LISTENING address for RPC. If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
+### LISTENING address for RPC. If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
 
 You can do this by setting laddr in RPC SERVER CONNECTIONs as 
 
@@ -132,7 +132,7 @@ REMEMBER, if FIREWALL is ENABLED, you need to allow BRIDGE NODE IP to be able to
 ## FIREWALL: Setting up firewall when hosting validator on proxmox guest node/ vs separate server node (one can use ufw too)
 
 Proxmox firewall configurations only allow to proxmox instance
-1. OPEN SSH port 22 on guest node 
+### OPEN SSH port 22 on guest node 
 
 Settings for Proxmox firewall:
 Here DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
@@ -140,13 +140,13 @@ Here DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: ac
 Setting for ufw:
 sudo ufw allow ssh
 
-(2a) OPEN DEFAULT listening port for p2p connection, 26656 
+### (2a) OPEN DEFAULT listening port for p2p connection, 26656 
 Settings for ufw:
 sudo ufw allow 26656
 
 OR
 
-(2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
+### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
 Settings for Proxmox firewall:
 Here DESTINATION port (D.Port) is 26603, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
@@ -154,9 +154,9 @@ Here DESTINATION port (D.Port) is 26603, interface: net0, Protocol: tcp, ACTION:
 Settings for ufw:
 sudo ufw allow 26603
 
-3. OPEN listening port p2p connection, 26603 on host node (if firewall enabled on host)
+### 3. OPEN listening port p2p connection, 26603 on host node (if firewall enabled on host)
 
-4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
+###  4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
 Settings for Proxmox firewall:
 Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
