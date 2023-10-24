@@ -415,5 +415,5 @@ celestia-appd gentx $KEY_NAME $STAKING_AMOUNT --chain-id $CHAIN_ID \
 jq . ${HOME}/.celestia-app/config/gentx/gentx-XXXXXXXX.json. > ${HOME}/<<VALIDATORN_NAME>.json>
 ```
 2. Fork https://github.com/celestiaorg/networks
-3. scp/cp file to celestiaorg/networks/celestia/gentx
+3. scp/cp file to this forked repo under celestiaorg/networks/celestia/gentx
 4. Create a Pull Request to the main branch of the repository
