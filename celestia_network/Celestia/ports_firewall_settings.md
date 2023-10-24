@@ -156,8 +156,13 @@ sudo ufw allow 26603
 
 ###  3. OPEN listening port p2p connection, 26603 on host node (if firewall enabled on host)
 
-###  4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
+###  4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR/FULLNODE) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
+
 Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
+
+Settings for ufw:
+sudo ufw allow from <BRIDGE_NODE_IP> proto tcp to any port 26657
+
 
 You can also connect bridge node to the fullnode (backup node)
