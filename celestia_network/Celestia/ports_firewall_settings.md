@@ -134,7 +134,7 @@ REMEMBER, if FIREWALL is ENABLED, you need to allow BRIDGE NODE IP to be able to
 Proxmox firewall configurations only allow to proxmox instance
 ### 1.  OPEN SSH port 22 on guest node 
 
-Settings for Proxmox firewall:
+Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 22, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
 Setting for ufw:
@@ -148,7 +148,7 @@ OR
 
 ### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
-Settings for Proxmox firewall:
+Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 26603, interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
 Settings for ufw:
@@ -157,7 +157,7 @@ sudo ufw allow 26603
 ###  3. OPEN listening port p2p connection, 26603 on host node (if firewall enabled on host)
 
 ###  4. (IMPORTANT IF BRIDGE NODE IS CONNECTING TO THIS VALIDATOR) OPEN RPC listening port 26657 ONLY to bridge node IP (SOURCE)
-Settings for Proxmox firewall:
+Settings for Proxmox firewall (via GUI interface):
 Here DESTINATION port (D.Port) is 26657, SOURCE: <BRIDGE_NODE_IP> interface: net0, Protocol: tcp, ACTION: accept, TYPE:in
 
 You can also connect bridge node to the fullnode (backup node)
