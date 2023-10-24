@@ -120,7 +120,7 @@ NO NEED to assign an EVM_ADDRESS at this time for celestia network
 
 Refer userguide for more wallet details
 
-## [Celestia Wallet Guide](../wallets_userguide.md)
+## [Celestia Wallet Setup and Useful Commands Guide](../wallets_userguide.md)
 
 ### Option 1 - generate new wallet
 
