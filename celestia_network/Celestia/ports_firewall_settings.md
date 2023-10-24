@@ -8,7 +8,7 @@ Add your public IP, port information to the list of external address and also co
 
 Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node, p2p address is where your guest is listening to (this can be defaut 26656 or user definded). 
 
-``This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION(on this node) port 26656 (FIREWALL needs to be ALLOW-IN connections to 26656)``
+``This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION(on this node) port 26656 (FIREWALL needs to ALLOW-IN connections to 26656)``
 
 ### (a) (NON_PROXMOX nodes) Keep P2P LISTENING port to be DEFAULT (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
 
@@ -128,7 +128,7 @@ laddr = "tcp://0.0.0.0:26603"
 external_address = "<PROXMOX_HOST_IP>:26603"
 ```
 
-``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port 26603 on this PROXMOX_HOST node. (Firewall needs to be enabled on HOST node to ALLOW IN connections to 26603``
+``NOTE: This means its listening(ALLOW IN) from ANY SOURCE to DESTINATION port 26603 on this PROXMOX_HOST node. (Firewall needs to ALLOW IN connections to 26603 on HOST_NODE``
 
 ### 3.  LISTENING address/port for RPC. 
 
