@@ -185,8 +185,6 @@ sudo ufw allow ssh
 sudo ufw allow 26656
 ```
 
- ### OR
-
 ### (2b) PROXMOX GUEST NODE only, OPEN user specified listening port for p2p connection (set above), 26603 on guest node (when P2P default port has been changed)
 
 ``Settings for Proxmox firewall (via GUI interface)``:
