@@ -8,7 +8,7 @@ Add your public IP, port information to the list of external address and also co
 
 Check/Modify default LISTENING port 26656 for p2p connection if setting validator on guest proxmox node
 
-#### (a) Keep LISTENING port to be default (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
+### (a) (NON_PROXMOX nodes) Keep P2P LISTENING port to be default (26656), Recommended for NON-Proxmox guest nodes or isolated nodes where 26656 is always free 
 
 You can keep this address to be the default address 26656, if using a dedicated node and no conflict between ports (fresh cloud node without anything else running on it now or in future). This is good choice if you have a separate node hosted on a separate server and port 26656 will not be in conflict.
 
@@ -27,7 +27,7 @@ laddr = 0:0:0:0:26656
 laddr = "tcp://0.0.0.0:26656"
 ```
 
-##### (b) EDIT DEFAULT LISTENING port from 26656 to another port, USEFUL when hosting fullnode/validator on Proxmox GUEST.
+#### (b)(PROXMOX GUEST Node) EDIT DEFAULT P2P LISTENING port from 26656 to another port, USEFUL when hosting fullnode/validator on Proxmox GUEST.
 
 If you wish to install validator/fullnode as a guest node (proxmox guest), you can edit the default LISTENING p2p port for validator/fullnode from 26656 be 26603 (in case 26656 is taken). This is desirable say if you want multiple testnets of celestia, to be run as different guest nodes and all need access to 26656. This changes the default port for listening for p2p connection for validator from 26656 to 26603. This is important if you are using say a proxmox guest node for validator and using natting to map ports from guest to host node. Here note that you will also need to setup natting from guest port 26603 to Host port 26603. If you have firewall, you need to open 26603 port in firewall.
 
