@@ -2,26 +2,29 @@
 
 ## Create a new user account on the dedicated server
 
-If you are signed in as the root user, you can create a new user at any time by running the following:
+[ADD NEW USER](../add_new_user_on_server.md)
+
+<!-- ## Create a new user account on the dedicated server
+
+ If you are signed in as the root user, you can create a new user at any time by running the following:
 
 ```
 adduser spidey
 
 ```
 
-Grant the user sudo privileges
+ Grant the user sudo privileges
 
 ```
 usermod -aG sudo spidey
 
 ```
 
-Check if the new user has sudo as one of the groups
+ Check if the new user has sudo as one of the groups
 
 ```
 groups spidey
-```
-
+``` -->
 
 ## Setup The Dependencies
 
