@@ -1,6 +1,6 @@
-Manage Ports/Firewall
+## Manage Ports/Firewall
 
-# MANAGE PORTS (IMPORTANT) (Config.toml file edits) 
+## MANAGE PORTS (IMPORTANT) (Config.toml file edits) 
 
 Add your public IP, port information to the list of external address and also configure laddr ports
 
