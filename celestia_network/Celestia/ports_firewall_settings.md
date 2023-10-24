@@ -54,7 +54,7 @@ laddr = "tcp://0.0.0.0:26603"
 
 Here I will add my HOST_IP and port to external_address under P2P configuration
 
-(a) In case of hosting on a separate dedicated node, use PUBLIC IP (one from -ifconfig) and port same as p2p port 
+#### (a) In case of hosting on a separate dedicated node, use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT set before)
 
 ```
 external_address=<PUBLIC_IP>:26656
@@ -80,7 +80,7 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = "<YOUR_HOST_IP>:26656"
 ```
 
-(b) In case of hosting on a guest proxmox node use this as the HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as default LISTENING p2p port chosen (26603 chosen before)
+### (b) In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as default LISTENING p2p port chosen (26603 chosen before)
 
 
 ```
