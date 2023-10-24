@@ -2,7 +2,7 @@
 
 ## Create a new user account on the dedicated server
 
-[ADD NEW USER](../add_new_user_on_server.md)
+## [ADD NEW USER FROM ROOT](../add_new_user_on_server.md)
 
 <!-- ## Create a new user account on the dedicated server
 
@@ -88,7 +88,7 @@ celestia-appd --help
 
 ```
 
-## Init node
+## Init node (Celestia network, --chain-id: celestia)
 
 You can first run the following commands:
 
@@ -120,7 +120,7 @@ NO NEED to assign an EVM_ADDRESS at this time for celestia network
 
 Refer userguide for more wallet details
 
-[Celestia Wallet Guide](../wallets_userguide.md)
+## [Celestia Wallet Guide](../wallets_userguide.md)
 
 ### Option 1 - generate new wallet
 
@@ -179,7 +179,7 @@ celestia-appd add-genesis-account $KEY_NAME $CELES_AMOUNT
 
 Please refer to the guide to manage listening port and external address as well as firewall when using proxmox guest node or dedicated isolated nodes for validator/bridge/fullnode
 
-[PORTS_FIREWALL_SETTINGS](../ports_firewall_settings.md)
+## [PORTS_FIREWALL_SETTINGS](../ports_firewall_settings.md)
 
 <!-- ## MANAGE PORTS (IMPORTANT) (Config.toml file edits) 
 
