@@ -50,11 +50,15 @@ This will change the entry to something like this
 laddr = "tcp://0.0.0.0:26603"
 ```
 
-### 2.  EXTERNAL address (P2P), Add HOST IP/Public IP to the list of external address in config.toml, this is essential for outgoing connections.
+### 2.  EXTERNAL address (P2P)
 
-Here I will add my HOST_IP and port to external_address under P2P configuration
+Add HOST IP/Public IP to the list of external address in config.toml, this is essential for outgoing connections.
 
-#### (a) In case of hosting on a separate dedicated node, use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT set before)
+Here I will add my PROXMOX_HOST_IP/PUBLIC_IP  and respective port to external_address under P2P configuration
+
+### (a) NON_PROXMOX nodes hosting validator/fullnode
+
+use PUBLIC IP (one from -ifconfig) and port same as p2p port (DEFAULT port as this is recommended option and not changed above)
 
 ```
 external_address=<PUBLIC_IP>:26656
@@ -80,7 +84,9 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = "<YOUR_HOST_IP>:26656"
 ```
 
-### (b) In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as default LISTENING p2p port chosen (26603 chosen before)
+### (b) PROXMOX_Guest node hosting validator/fullnode
+
+In case of hosting on a guest proxmox node use PROXMOX_HOST_IP (ip corresponding to host of proxmox server which is also the public IP address) and port same as default LISTENING p2p port chosen (26603 chosen before)
 
 
 ```
@@ -107,7 +113,9 @@ laddr = "tcp://0.0.0.0:26603"
 external_address = "<PROXMOX_HOST_IP>:26603"
 ```
 
-### 3.  LISTENING address for RPC. If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
+### 3.  LISTENING address/port  for RPC. 
+
+If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 26657 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
 
 You can do this by setting laddr in RPC SERVER CONNECTIONs as 
 
