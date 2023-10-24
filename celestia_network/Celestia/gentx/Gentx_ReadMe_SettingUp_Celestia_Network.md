@@ -341,7 +341,7 @@ You can also connect bridge node to the fullnode (backup node) -->
 
 ## Pruning 
 
-If you have a separate fullnode with NO pruning connecting to bridge node, then you can use pruning settings for validator node as default and connect bridge node to your fullnode.
+(a) If you have a separate fullnode with NO pruning connecting to bridge node, then you can use pruning settings for validator node as default and connect bridge node to your fullnode.
 
 I am choosing pruning for validator node, and will use an archive node/fullnode connected to bridge node. This is preferable as it isolated validator node from bridge/full-node and also allows fullnode to act as a backup failsafe validator node if needed.
 
@@ -361,8 +361,9 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 indexer=null
 ```
 
+OR
 
-If your bridge node is being connected to fullnode node, then using 
+(b) If your bridge node is being connected to fullnode node, then use pruning=nothing for bridge node 
 
 ```
 pruning:nothing
