@@ -40,6 +40,8 @@ KEY_NAME=validator-mainnet
 celestia-appd keys add $KEY_NAME --recover
 ```
 
+Next type BIP mnemonic of the key to recover it.
+
 ## Check list of commands for wallet
 
 ```
