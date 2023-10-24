@@ -171,7 +171,7 @@ laddr = "tcp://0.0.0.0:26657"
 
 default=9090
 
-If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 9090 (default rpc port) from your validator/fullnode node to be able to accessed by your bridge node.
+If you are going to run a bridge node and need to connect it to validator/fullnode, you also need to allow port 9090 (default grpc port) from your validator/fullnode node to be able to accessed by your bridge node.
 
 You can do this by setting address in gRPC SERVER CONNECTIONs and allowing firewall for this port to allowing incoming connection.
 
