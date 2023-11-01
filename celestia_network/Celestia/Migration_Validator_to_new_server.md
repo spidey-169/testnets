@@ -33,3 +33,4 @@ NOTE: You need to copy of priv_validator_state.json AFTER you switch off NODE A 
 
 These steps saving my validator node right after genesis. Feel free to follow these or contact me if you need any help in the future.
 
+I would like to thank [Vince](https://github.com/kw1knode) for guiding me through these steps. 
