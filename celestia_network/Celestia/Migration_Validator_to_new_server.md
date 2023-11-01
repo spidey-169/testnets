@@ -28,7 +28,7 @@ NOTE: You need to copy of priv_validator_state.json AFTER you switch off NODE A 
 9. Stop Node B
 10. Swap in your backed up files (node key, priv val key, state json) 
 11. Start Node B
-12. curl http://localhost:26657/status  on Node B and you should see voting power > 0, signing on explorer etc.
+12. ```curl http://localhost:26657/status```  on Node B and you should see voting power > 0, signing on explorer etc.
 13. Now you can nuke Node A and you're done 
 
 These steps saving my validator node right after genesis. Feel free to follow these or contact me if you need any help in the future.
