@@ -15,7 +15,7 @@ You need to backup validator keys (/config/priv_validator_key.json,/config/node_
 
 NOTE: You need to copy of priv_validator_state.json AFTER you switch off NODE A (existing validator node), as priv_validator_state.json is continuously changing and tracking the last signed block. 
 
-STEPS:
+## STEPS:
 
 1. get node B synced up to chainhead and running. 
 2. Make sure you backup priv_validator_key.json and node_key.json (you can do this anytime) on Node A
