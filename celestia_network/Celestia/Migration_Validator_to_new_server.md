@@ -21,7 +21,7 @@ NOTE: You need to copy of priv_validator_state.json AFTER you switch off NODE A 
 2. Make sure you backup priv_validator_key.json and node_key.json (you can do this anytime) on Node A
 3. Stop Node A
 4. Check to confirm you have stopped signing (explorers, pvtop etc) [ensure you are not signing blocks on multiple explorers and wait atleast 2-3 blocks before proceeding]
-5. Backup priv_validator_state json after STEP 4 (cat it in your terminal so double check that block is the block you see missing on explorer)
+5. Backup priv_validator_state.json after STEP 4 (cat it in your terminal so double check that block is the block you see missing on explorer)
 6. Remove the priv_validator_key.json from Node A (delete or move out of /config folder)
 7. Run Node A again, now you can check its no longer signing as your val. it will create a new priv_validator_key.json
 8. ``curl http://localhost:26657/status``  on Node A and make sure it says ``"voting_power":"0"}}}``
