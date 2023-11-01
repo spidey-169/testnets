@@ -31,6 +31,6 @@ NOTE: You need to copy of priv_validator_state.json AFTER you switch off NODE A 
 12. ```curl http://localhost:26657/status```  on Node B and you should see voting power > 0, signing on explorer etc.
 13. Now you can nuke Node A and you're done 
 
-These steps saving my validator node right after genesis. Feel free to follow these or contact me if you need any help in the future.
+These steps saved my validator node right after genesis when it experienced a hardware issue causing logs to balloon up storage. Feel free to follow these or contact me if you need any help in the future.
 
 I would like to thank [Vince](https://github.com/kw1knode) for guiding me through these steps. 
