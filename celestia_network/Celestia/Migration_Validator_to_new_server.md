@@ -7,7 +7,7 @@ If not done correctly, your validator can get tombstoned, hence its absolutely v
 
 ## Scenario
 
-We have two nodes: validator Node A and fully-synced non-validator Node B. Both are running under the management of cosmovisor. We have a backup copy of "priv_validator_key.json" from Node A. We want to move the validator role from Node A to Node B.
+We have two nodes: validator Node A and fully-synced non-validator Node B. We want to move the validator role from Node A to Node B.
 
 ## BACKUP Validator keys
 
