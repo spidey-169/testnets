@@ -1,5 +1,5 @@
 
-Validator Server Migration Step by Step Process:
+# Validator Server Migration Step by Step Process:
 
 Validator nodes can come across hardware issues and sometimes, its important to migrate your validator node to a full-syncd non-validator node. 
 
